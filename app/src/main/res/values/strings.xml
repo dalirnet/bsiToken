@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BsiToken</string>
+    <string name="three">Three</string>
+    <string name="two">Two</string>
+    <string name="one">One</string>
+    <string name="sms">SMS</string>
+    <string name="your_pass">Your Pass</string>
+    <string name="get_token">Get Token</string>
+    <string name="please_grant_permission">Please Grant Permission[s]</string>
+    <string name="starting_process">Starting Process ...</string>
+    <string name="get_sms">Get SMS</string>
+    <string name="parse_sms">Convert</string>
+    <string name="input_error">Please Fill Input[s]</string>
+    <string name="not_found">Not Found!</string>
+</resources>
