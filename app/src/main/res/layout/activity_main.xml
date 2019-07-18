@@ -20,14 +20,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1" />
 
-    <Button
-        android:id="@+id/getSms"
+
+    <LinearLayout
+        android:id="@+id/topLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/get_sms"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass" />
+        app:layout_constraintTop_toBottomOf="@+id/pass">
+        <Button
+            android:id="@+id/getSms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_sms" />
+
+        <Button
+            android:id="@+id/getLoginToken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_login_token" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/sms"
@@ -41,7 +54,7 @@
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getSms" />
+        app:layout_constraintTop_toBottomOf="@+id/topLayout" />
 
     <Button
         android:id="@+id/convert"

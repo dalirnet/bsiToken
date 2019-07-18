@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity {
 
     Button getTokenBtn;
+    Button getLoginTokenBtn;
     Button getSmsBtn;
     Button convertBtn;
     EditText smsTxt;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getTokenBtn = this.findViewById(R.id.getToken);
+        getLoginTokenBtn = this.findViewById(R.id.getLoginToken);
         getSmsBtn = this.findViewById(R.id.getSms);
         convertBtn = this.findViewById(R.id.convert);
         smsTxt = this.findViewById(R.id.sms);
@@ -60,6 +62,26 @@ public class MainActivity extends AppCompatActivity {
                 Intent ussdCall = new Intent(Intent.ACTION_CALL);
                 String encodedHash = Uri.encode("#");
                 ussdCall.setData(Uri.parse("tel:" + "*719*5*2*" + ussd + encodedHash));
+                if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(MainActivity.this, R.string.please_grant_permission, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                startActivity(ussdCall);
+                Toast.makeText(MainActivity.this, R.string.starting_process, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        getLoginTokenBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                if (passTxt.getText().length() != 4) {
+                    Toast.makeText(MainActivity.this, R.string.input_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent ussdCall = new Intent(Intent.ACTION_CALL);
+                String encodedHash = Uri.encode("#");
+                ussdCall.setData(Uri.parse("tel:" + "*719*5*1*" + passTxt.getText().toString() + encodedHash));
                 if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(MainActivity.this, R.string.please_grant_permission, Toast.LENGTH_SHORT).show();
                     return;

@@ -12,4 +12,5 @@
     <string name="parse_sms">Convert</string>
     <string name="input_error">Please Fill Input[s]</string>
     <string name="not_found">Not Found!</string>
+    <string name="get_login_token">LOGIN</string>
 </resources>
