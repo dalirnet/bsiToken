@@ -11,15 +11,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     EditText num2Txt;
     EditText num3Txt;
     EditText passTxt;
+    EditText trackTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         num2Txt = this.findViewById(R.id.num2);
         num3Txt = this.findViewById(R.id.num3);
         passTxt = this.findViewById(R.id.pass);
+        trackTxt = this.findViewById(R.id.track);
 
         getTokenBtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -103,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean findSms = false;
                 String[] projection = new String[]{"address", "body", "date"};
-                @SuppressLint("Recycle") Cursor cursor = getContentResolver().query(Uri.parse("content://sms"), projection, "address LIKE '%9820004008%'", null, "date desc");
+                @SuppressLint("Recycle") Cursor cursor = getContentResolver().query(Uri.parse("content://sms"), projection, "address LIKE '%" + trackTxt.getText() + "%'", null, "date desc");
 
                 if (cursor != null) {
                     if (cursor.moveToFirst()) {
